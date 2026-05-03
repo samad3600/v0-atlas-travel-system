@@ -1,4 +1,4 @@
-import { openai } from "@ai-sdk/openai";
+import { google } from "@ai-sdk/google";
 
-// Using Vercel AI Gateway with OpenAI models (zero-config, no API key needed)
-export const aiModel = openai("gpt-4o-mini");
+// Using Google Gemini API
+export const aiModel = google("gemini-1.5-flash");
