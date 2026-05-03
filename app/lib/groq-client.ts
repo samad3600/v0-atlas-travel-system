@@ -1,5 +1,4 @@
-import { createGroq } from "@ai-sdk/groq";
+import { openai } from "@ai-sdk/openai";
 
-export const groq = createGroq({
-  apiKey: process.env.GROQ_API_KEY,
-});
+// Using Vercel AI Gateway with OpenAI models (zero-config, no API key needed)
+export const aiModel = openai("gpt-4o-mini");

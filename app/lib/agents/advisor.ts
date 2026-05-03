@@ -1,5 +1,5 @@
 import { generateText } from "ai";
-import { groq } from "../groq-client";
+import { aiModel } from "../groq-client";
 import { TravelPlanInput } from "./types";
 
 export async function advisorAgent(
@@ -32,7 +32,7 @@ Provide practical travel advice including:
 Keep advice concise and actionable.`;
 
   const { text } = await generateText({
-    model: groq("llama-3.1-70b-versatile"),
+    model: aiModel,
     prompt,
   });
 

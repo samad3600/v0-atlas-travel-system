@@ -1,5 +1,5 @@
 import { generateText } from "ai";
-import { groq } from "../groq-client";
+import { aiModel } from "../groq-client";
 import { TravelPlanInput } from "./types";
 
 export async function researcherAgent(input: TravelPlanInput): Promise<string> {
@@ -21,7 +21,7 @@ Provide a concise research brief including:
 Keep your response to 2-3 paragraphs, factual and helpful.`;
 
   const { text } = await generateText({
-    model: groq("llama-3.1-70b-versatile"),
+    model: aiModel,
     prompt,
   });
 

@@ -1,5 +1,5 @@
 import { generateText } from "ai";
-import { groq } from "../groq-client";
+import { aiModel } from "../groq-client";
 import { TravelPlanInput } from "./types";
 
 export async function plannerAgent(
@@ -27,7 +27,7 @@ Create a detailed day-by-day itinerary that:
 Format each day clearly with timing and activity details.`;
 
   const { text } = await generateText({
-    model: groq("llama-3.1-70b-versatile"),
+    model: aiModel,
     prompt,
   });
 
