@@ -27,7 +27,7 @@ Create a detailed day-by-day itinerary that:
 Format each day clearly with timing and activity details.`;
 
   const { text } = await generateText({
-    model: groq("mixtral-8x7b-32768"),
+    model: groq("llama-3.1-70b-versatile"),
     prompt,
   });
 

@@ -32,7 +32,7 @@ Provide practical travel advice including:
 Keep advice concise and actionable.`;
 
   const { text } = await generateText({
-    model: groq("mixtral-8x7b-32768"),
+    model: groq("llama-3.1-70b-versatile"),
     prompt,
   });
 
