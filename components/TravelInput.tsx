@@ -58,9 +58,9 @@ export function TravelInput({ onSubmit, isLoading }: TravelFormProps) {
   };
 
   return (
-    <Card className="p-6 bg-card">
+    <Card className="p-6 bg-card/80 backdrop-blur-sm border border-border/50 hover:border-border/80 transition-all duration-300 shadow-lg hover:shadow-xl">
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="space-y-2">
+        <div className="space-y-2 animate-in fade-in slide-in-from-top-2 duration-500">
           <Label htmlFor="destination" className="text-foreground font-semibold">
             Where do you want to go?
           </Label>
@@ -70,11 +70,11 @@ export function TravelInput({ onSubmit, isLoading }: TravelFormProps) {
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
             disabled={isLoading}
-            className="border-border bg-input text-foreground placeholder:text-muted-foreground"
+            className="border-border bg-input text-foreground placeholder:text-muted-foreground transition-all focus:ring-primary/50 focus:shadow-lg"
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-2 gap-4 animate-in fade-in slide-in-from-top-2 duration-500 delay-100">
           <div className="space-y-2">
             <Label htmlFor="budget" className="text-foreground font-semibold">
               Budget (USD)
@@ -86,7 +86,7 @@ export function TravelInput({ onSubmit, isLoading }: TravelFormProps) {
               value={budget}
               onChange={(e) => setBudget(e.target.value)}
               disabled={isLoading}
-              className="border-border bg-input text-foreground placeholder:text-muted-foreground"
+              className="border-border bg-input text-foreground placeholder:text-muted-foreground transition-all focus:ring-primary/50 focus:shadow-lg"
             />
           </div>
           <div className="space-y-2">
@@ -100,26 +100,26 @@ export function TravelInput({ onSubmit, isLoading }: TravelFormProps) {
               value={duration}
               onChange={(e) => setDuration(e.target.value)}
               disabled={isLoading}
-              className="border-border bg-input text-foreground placeholder:text-muted-foreground"
+              className="border-border bg-input text-foreground placeholder:text-muted-foreground transition-all focus:ring-primary/50 focus:shadow-lg"
             />
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-3 animate-in fade-in slide-in-from-top-2 duration-500 delay-200">
           <Label className="text-foreground font-semibold">What interests you?</Label>
           <div className="grid grid-cols-2 gap-3">
-            {INTERESTS.map((interest) => (
-              <div key={interest} className="flex items-center space-x-2">
+            {INTERESTS.map((interest, idx) => (
+              <div key={interest} className={`flex items-center space-x-2 animate-in fade-in duration-300`} style={{ animationDelay: `${50 + idx * 20}ms` }}>
                 <Checkbox
                   id={interest}
                   checked={interests.includes(interest)}
                   onCheckedChange={() => handleInterestChange(interest)}
                   disabled={isLoading}
-                  className="border-border"
+                  className="border-border transition-all hover:border-primary/50"
                 />
                 <Label
                   htmlFor={interest}
-                  className="text-sm text-foreground cursor-pointer font-normal"
+                  className="text-sm text-foreground cursor-pointer font-normal hover:text-primary/80 transition-colors"
                 >
                   {interest}
                 </Label>
@@ -131,9 +131,16 @@ export function TravelInput({ onSubmit, isLoading }: TravelFormProps) {
         <Button
           type="submit"
           disabled={isLoading}
-          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-2"
+          className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-primary-foreground font-semibold py-2 transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95 animate-in fade-in slide-in-from-top-2 duration-500 delay-300"
         >
-          {isLoading ? 'Planning your trip...' : 'Plan My Trip'}
+          {isLoading ? (
+            <span className="flex items-center justify-center gap-2">
+              <span className="inline-block w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+              Planning your trip...
+            </span>
+          ) : (
+            'Plan My Trip'
+          )}
         </Button>
       </form>
     </Card>
